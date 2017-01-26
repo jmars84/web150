@@ -18,7 +18,6 @@ var sum = 0;
 var max = 0;
 var min = 100;;
 var br = "<br>";
-var li = "<li>";
 
 
 	for (i = 0; i < students.length; i = i + 1 ) {
@@ -30,7 +29,7 @@ var li = "<li>";
 	var student = stud.split("|");
     
 	//print list 
-    document.write(br + student[0] + ": " + student[1]);
+    document.write(student[0] + ": " + student[1] + br);
     
     //turn into number for min, max, & average
     var score = parseInt(student[1]);
