@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Making the Grade: Week 3</title>
+	<meta name="description" content="Jeanine's Week 3 Homework - Making the Grade">
+	<meta name="author" content="Jeanine's Web150 HW 3 - SUBMIT DATE: 1/25/2017">	       
+</head>
+<body> 
+
+
+<script>
+var grades = "jim|25, sue|32, mary|34, ann|22, ted|28, frank|15, lisa|19, mike|30, ahn|26, vishaya|27";
+var students = grades.split (", ");
+students.sort();
+var sum = 0;
+var max = 0;
+var min = 100;;
+var br = "<br>";
+
+
+	for (i = 0; i < students.length; i = i + 1 ) {
+	var stud = students[i];
+	//first letter uppercase
+    var stud = stud.charAt(0).toUpperCase() + stud.slice(1);
+    
+    //split at | to make score 
+	var student = stud.split("|");
+    
+	//print list 
+    document.write(student[0] + ": " + student[1] + br);
+    
+    //turn into number for min, max, & average
+    var score = parseInt(student[1]);
+   	
+    //max score
+  	if (score > max) {
+    	max = score
+  	}
+  	
+	//min score
+  	if (score < min) {
+    min = score;        
+    }
+    
+    //average score
+    sum += score;
+    average = sum/students.length;
+}
+    		
+document.write (br + br + "Total Students: " + students.length + br);
+
+document.write(br+ "Min: " + min + br); 
+
+document.write(br +"Max: " + max + br);
+
+document.write(br + "Average: " +  average + br);
+
+</script>
+</body>
+</html>  
