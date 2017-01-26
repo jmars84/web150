@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Pig Latin Week 2</title>
+	<meta name="description" content="Jeanine's Week 2 Homework: Pig Latin">
+	<meta name="author" content="Jeanine's Web150 HW - SUBMIT DATE: 1/19/2017">	       
+</head>
+<body> 
+
+<script>
+	//Note: Page needs to be reloaded to enter a new word. The prompt will not let you enter a new word. It will just keep repeating the same word or ERROR message on the page.
+	
+    //letter 1
+    var l1 = "";
+    //the word entered in the prompt
+    var words = "";
+    //makes entered word lower case
+    //letter 2
+    var l2 = ""; 
+    //breaks up the line
+    var br = "<br />";
+    //results in PigLatin
+	var PigLatin = "";
+	var latin = "";
+
+	//the greeting on the page
+    document.write("Pig Latin Translator:" + br);
+
+	//pops up when the page is opened
+    words = prompt("Enter a word to translate into Pig Latin");
+    
+    //makes the word lower case
+	word = words.toLowerCase("");
+	
+	//extracts the letters
+    l1 = word.substr(0,1);
+    l2 = word.substr(1,1);
+    
+    //message to enter word if prompt is left empty and a break
+    if (words === "" || words === false) {
+    	PigLatin = "ERROR: PLEASE ENTER A WORD IN THE POP UP BOX TO GET A TRANSLATION" + br;
+	}
+	//starts with a vowel put 'way' behind the word with a break
+    else if (l1 === "a" || l1 === "e" || l1 === "i" || l1 === "o" || l1 === "u") {
+        PigLatin  = word + "way" + br;
+    }
+    
+	//1st letter starts with a consonant: put the 1 consonant on the end, add 'ay', and break
+    else if (l2 === "a" || l2 === "e" || l2 === "i" || l2 === "o" || l2 === "u") {
+         PigLatin = word.substr(1, word.length - 1) + l1 + "ay" + br; 
+    }   
+    
+    ///2nd letter starts with a consonant: put the 2 consonant on the end, add 'ay', and break
+    else {
+         PigLatin = word.substr(2, word.length - 1) + l1 + l2 + "ay" + br;
+    }
+	
+	//'pig' the command that needs to be entered to escape the prompt box to show the word translated on the page
+    while (word != 'pig') {
+        word = prompt("type 'pig' and hit 'ok' to see the Pig Latin translation");
+        document.write(PigLatin + latin);   
+    }
+
+</script>   
+</body>
+</html>  
