@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>My Robo Dealer</title>
+		<meta name="description" content="">
+		<meta name="author" content="Jeanine">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<input type="button" value="Play Robo Dealer" onclick="fiveCard()" />
+<div id="game"></div>
+<ul id="list"></ul>
+<script>
+ 	
+	 var theDeck = [
+    	{value:"A", suit:"Spades", number:"10"},
+        {value:"2", suit:"Spades", number:"2"},
+        {value:"3", suit:"Spades", number:"3"},
+        {value:"4", suit:"Spades", number:"4"},
+        {value:"5", suit:"Spades", number:"5"},
+        {value:"6", suit:"Spades", number:"6"},
+        {value:"7", suit:"Spades", number:"7"},
+        {value:"8", suit:"Spades", number:"8"},
+        {value:"9", suit:"Spades", number:"9"},
+        {value:"10", suit:"Spades", number:"10"},
+        {value:"J", suit:"Spades", number:"10"},
+        {value:"Q", suit:"Spades", number:"10"},
+        {value:"K", suit:"Spades", number:"10"},
+        {value:"A", suit:"Hearts", number:"10"},
+        {value:"2", suit:"Hearts", number:"2"},
+        {value:"3", suit:"Hearts", number:"3"},
+        {value:"4", suit:"Hearts", number:"4"},
+        {value:"5", suit:"Hearts", number:"5"},
+        {value:"6", suit:"Hearts", number:"6"},
+        {value:"7", suit:"Hearts", number:"7"},
+        {value:"8", suit:"Hearts", number:"8"},
+        {value:"9", suit:"Hearts", number:"9"},
+        {value:"10", suit:"Hearts", number:"10"},
+        {value:"J", suit:"Hearts", number:"10"},
+        {value:"Q", suit:"Hearts", number:"10"},
+        {value:"K", suit:"Hearts", number:"10"}, 
+        {value:"A", suit:"Diamonds", number:"10"},
+        {value:"2", suit:"Diamonds", number:"2"},
+        {value:"3", suit:"Diamonds", number:"3"},
+        {value:"4", suit:"Diamonds", number:"4"},
+        {value:"5", suit:"Diamonds", number:"5"},
+        {value:"6", suit:"Diamonds", number:"6"},
+        {value:"7", suit:"Diamonds", number:"7"},
+        {value:"8", suit:"Diamonds", number:"8"},
+        {value:"9", suit:"Diamonds", number:"9"},
+        {value:"10", suit:"Diamonds", number:"10"},
+        {value:"J", suit:"Diamonds", number:"10"},
+		{value:"Q", suit:"Diamonds", number:"10"},
+        {value:"K", suit:"Diamonds", number:"10"},
+        {value:"A", suit:"Clubs", number:"10"},
+        {value:"2", suit:"Clubs", number:"2"},
+        {value:"3", suit:"Clubs", number:"3"},
+        {value:"4", suit:"Clubs", number:"4"},
+        {value:"5", suit:"Clubs", number:"5"},
+        {value:"6", suit:"Clubs", number:"6"},
+        {value:"7", suit:"Clubs", number:"7"},
+        {value:"8", suit:"Clubs", number:"8"},
+        {value:"9", suit:"Clubs", number:"9"},
+        {value:"10", suit:"Clubs", number:"10"},
+        {value:"J", suit:"Clubs", number:"10"},
+        {value:"Q", suit:"Clubs", number:"10"},
+        {value:"K", suit:"Clubs", number:"10"}
+			
+			]
+
+			function fiveCard() {
+
+				var begin = document.getElementById("game");
+				begin.innerText = "Let's play a game!";
+
+				list.innerText = ("");
+
+				return play();
+			}
+
+			function play() {
+
+				for ( d = 0; d < 5; d++) {
+					
+					var shuffle = Math.floor(Math.random() * theDeck.length);
+					var myCard = theDeck[shuffle];
+
+					var ul = document.createElement("ul");
+					ul.innerHTML = myCard.value + " of " + myCard.suit + " = Points: " + myCard.number;
+
+					var list = document.getElementById("list");
+					list.appendChild(ul);
+				}
+
+			}
+
+</script>
+
+</body>
+</html>
