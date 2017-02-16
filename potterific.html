@@ -1,0 +1,198 @@
+<html>
+    <head>
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </head>
+    <style>
+        .over {
+            background-color: orange;
+        }
+        .selected {
+            background-color: green;
+        }
+        
+            
+    /*Let's turn our attention to the magical world of Harry Potter. This week we have experimented with methods for styling page elements, but what if we wanted to be more granular? For your assignment, create a page that has the following characteristics:
+
+A table listing Harry Potter characters along with their name, gender, house, role, and alignment. Table should be generated programmatically from a JavaScript data set.
+A set of buttons above the table that will allow you to filter table rows by "house" when clicked. 
+A "reset" or "all" button that will show all the rows in the original table,
+Table column headers should always remain visible,
+You can add more Potter characters or use different data (e.g. movies) to make results more interesting, 
+This file has preliminary code that will help you get started:
+
+https://github.com/brendenwest/web150/blob/master/6_jquery/potterific.html
+
+Hints:
+
+While generating each row, you can use common Array methods to track unique 'house' names  and determine whether to add a new 'filter' button
+You can add a click event to a DOM object (e.g. a button) like this, where <OBJECT> is the result of jQuery selection:
+<OBJECT>.on('click', function() {
+  var $this = $(this); // refers to the object being clicked
+  // add code to execute when object is clicked
+ });
+You should show/hide the entire row instead of individual cells or blocks inside the row
+You can use jQuery's ':has' and ':contains' selectors to identify rows for filtering
+You can use jQuery selectors like :visible , :odd , :even to identify rows for styling
+See reference here - http://www.w3schools.com/jquery/jquery_ref_selectors.asp (Links to an external site.) 
+
+ 
+
+Extra credit:
+
+Generate 'filter' buttons programmatically, based on the JavaScript data set,
+Show rows with alternating colors, even when filtered (HINT: the command to hide/show rows fires on each row. You need to update row color only after visibility is changed on all rows), 
+ 
+
+Rubric
+
+	Default table shows column headers and one row for each item in the javascript data set.
+
+	Buttons displayed for each unique 'house'. Clicking button triggers row-filtering for the selected category
+
+	Row-filtering correctly hides rows that aren't in the selected category
+
+	Table header remains visible
+
+	Reset button displayed with click event that restores table to default view
+
+	Extra credit: Buttons to filter rows are generated programmatically
+
+	Extra credit: Alternating row colors shown correctly on full table and on filtered rows
+
+*/
+    </style>
+    
+
+
+    <body>
+    	
+    	
+    	
+        <div id="buttons"></div>
+        	
+       <button id ="reset">reset</button>
+        
+       	<table id ="harry" border='1'>
+					<tr>
+						<th>Name</th>
+						<th>Role</th>
+						<th>House</th>
+						<th>Gender</th>
+						<th>Aligns</td> 
+					<tr>
+				</table>
+    </body>
+        
+        <script>
+        // list of characters
+        var characters = [
+        {name:"Albus Dumbledore", role:"staff", house:"Gryffindor",gender:"m",alignment:"good"},    
+        {name:"Nymphadora Tonks", role:"", house:"Hufflepuff",gender:"f",alignment:"good"},    
+        {name:"Ron Weasley", role:"student", house:"Gryffindor",gender:"m",alignment:"good"},    
+        {name:"Ginny Weasley", role:"student", house:"Gryffindor",gender:"f",alignment:"good"},    
+		{name:"Hermione Granger", role:"student", house:"Gryffindor",gender:"f",alignment:"good"},    
+        {name:"Mad-eye Moody", role:"staff", house:"",gender:"m",alignment:"good"},    
+        {name:"Prof McGonagall", role:"staff", house:"Gryffindor",gender:"f",alignment:"good"},    
+        {name:"Harry Potter", role:"student", house:"Gryffindor",gender:"m",alignment:"good"},    
+        {name:"Draco Malfoy", role:"student", house:"Slytherin",gender:"m",alignment:"evil"},    
+        {name:"Hagrid", role:"staff", house:"Gryffindor",gender:"m",alignment:"good"},    
+        {name:"Luna Lovegood", role:"student", house:"Ravenclaw",gender:"f",alignment:"good"},    
+        {name:"Voldemort", role:"", house:"Slytherin",gender:"m",alignment:"evil"},    
+        {name:"Bellatrix Lestrange", role:"", house:"Slytherin",gender:"f",alignment:"evil"},           
+        {name:"Severus Snape", role:"staff", house:"Slytherin",gender:"m",alignment:"?"}
+        ];
+        
+        $(document).ready(function() {
+        // add table row for each character
+       	 var houses = [];
+       	 for (var row in characters) {
+       	 	
+			$("table").append ("<tr><td>"
+       	 	
+       	 	+characters[row].name+ "</td><td>"
+       	 	+characters[row].role+ "</td><td>"
+			+characters[row].house+ "</td><td>"
+       	 	+characters[row].gender+ "</td><td>"
+       	 	+characters[row].alignment+ "</td></tr>");
+       	 	
+       	 	
+       	 	// generate button for each unique house
+       	 		
+       	 		var house = characters[row].house;
+       	 		if (houses.indexOf(house) == -1) {
+       	 		houses.push(house);
+       	 		$('#buttons').append("<button>" +house+ "</button>")
+       	 		
+       	 		
+       	 }
+       } 
+         
+    	$("tr:even").css("background-color", "#d6d4e0");
+    	$("tr:odd").css("background-color", "#b8a9c9");
+    	$("tr:contains(House)").css("background-color", "GhostWhite");
+    	
+    	//button options added for Houses
+    
+    	$("button:contains('Slytherin')").click(function(){
+    		$("tr").hide();
+    		$("tr:contains('Slytherin')").toggle();
+    		$("tr:visible:even").css("background-color", "#d6d4e0");
+    		$("tr:visible:odd").css("background-color", "b8a9c9");
+    		$("tr:contains(Gender)").show().css("background-color", "GhostWhite");
+    		
+    	});
+    	
+    	
+    	
+    	$("button:contains('Gryffindor')").click(function(){
+    		$("tr").hide();
+    		$("tr:contains('Gryffindor')").toggle();
+    		$("tr:visible:even").css("background-color", "#d6d4e0");
+    		$("tr:visible:odd").css("background-color", "b8a9c9");
+    		$("tr:contains(Gender)").show().css("background-color", "GhostWhite");
+    		
+    	});
+    	
+    	
+    	
+    	$("button:contains('Ravenclaw')").click(function(){
+    		$("tr").hide();
+    		$("tr:contains('Ravenclaw')").toggle();
+    		$("tr:visible:even").css("background-color", "#d6d4e0");
+    		$("tr:visible:odd").css("background-color", "b8a9c9");
+    		$("tr:contains(Gender)").show().css("background-color", "GhostWhite");
+    		
+    	});
+    	
+    	
+    	
+    	$("button:contains('Hufflepuff')").click(function(){
+    		$("tr").hide();
+    		$("tr:contains('Hufflepuff')").toggle();
+    		$("tr:visible:even").css("background-color", "#d6d4e0");
+    		$("tr:visible:odd").css("background-color", "b8a9c9");
+    		$("tr:contains(Gender)").show().css("background-color", "GhostWhite");
+    			
+    		
+    	});
+    	
+    	
+    	$("button:contains('reset')").click(function() {
+    		$("tr:contains('Hufflepuff')").show();
+    		$("tr:contains('Ravenclaw')").show();
+    		$("tr:contains('Gryffindor')").show();
+    		$("tr:contains('Slytherin')").show();
+    		$("tr:contains('')").show();
+    		$("tr:visible:even").css("background-color", "#d6d4e0");
+    		$("tr:visible:odd").css("background-color", "b8a9c9");
+    		$("tr:contains(Gender)").show().css("background-color", "GhostWhite");
+    			
+    		
+    	});
+    	
+       });
+       
+       
+			
+</script>       
+</html>
