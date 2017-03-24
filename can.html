@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<script>
+//For this assignment, get creative with Canvas 2d drawin methods in whatever way you like, using each the following concepts at a minimum:
+
+//line * rectangle * arc * stroke style * fill style * animation * canvas rotation * save & restore
+
+//Uses line drawing 
+
+//Uses rectangle drawing *
+//Uses arc drawing *
+//Uses a fill style *
+//Uses animation
+//Uses canvas rotation
+
+//moveTo() * beginPath() * closePath() * clearRect()
+</script>
+
+<html>
+<body>
+	
+<canvas id="myCanvas" width="600" height="300" style="border:1px solid #d5d5d5;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+
+var x = -5;
+var y = -5;
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+ctx.rotate(20 * Math.PI / 110);
+ctx.fillStyle = "blue";  //Rotates canvas & does the fill style
+ctx.fillRect(y + 55, 15, 100, 50); //Uses rectangle drawing
+ctx.arc(x + 135,65,10,0,2*Math.PI);
+ctx.arc(x + 70,65,10,0,2*Math.PI);//Use arc drawing
+ctx.stroke();// Draws it
+
+ctx.beginPath();
+ctx.moveTo(-70000,-120);
+ctx.lineTo(500,80); //Uses line drawing
+ctx.stroke();//draws it 
+
+
+</script>
+</body>
+</html>
+
+
+
+

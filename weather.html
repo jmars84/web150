@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+		<title>weather</title>
+		<meta name="description" content="">
+		<meta name="author" content="Jeanine">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+
+<script>
+     
+    $(document).ready(function(){
+  
+    
+        $('#search').click(function(e){
+        	
+            e.preventDefault();
+            
+        var city = $('#city').val();
+        
+        var url ='http://api.openweathermap.org/data/2.5/forecast?q=' + city + 'us&units=imperial&appid=a369652cec9d21960b94ea2d0fa36154';
+        
+        $.getJSON(url, function(search){
+        	
+            //skip every 7 days to get 5 day forecast
+            
+            $('#one').html("<li>Weather Description: </li>" + search.list[0].weather[0].main + "<li>Date: </li>" + search.list[0].dt_txt + "<li>Temperature Min: </li>" +  search.list[0].main.temp_min + "<li>Temperature Max: </li>" +  search.list[0].main.temp_max + "<li>Humidity: </li>" +  search.list[0].main.humidity);
+         
+           	$('#two').html("<li>Weather Description: </li>" + search.list[7].weather[0].main + "<li>Date: </li>" + search.list[7].dt_txt + "<li>Temperature Min: </li>" +  search.list[7].main.temp_min + "<li>Temperature Max: </li>" +  search.list[7].main.temp_max + "<li>Humidity: </li>" +  search.list[7].main.humidity);
+         
+            $('#three').html("<li>Weather Description: </li>" + search.list[14].weather[0].main + "<li>Date: </li>" + search.list[14].dt_txt + "<li>Temperature Min: </li>" +  search.list[14].main.temp_min + "<li>Temperature Max: </li>" +  search.list[14].main.temp_max + "<li>Humidity: </li>" +  search.list[14].main.humidity);
+         
+            $('#four').html("<li>Weather Description: </li>" + search.list[21].weather[0].main + "<li>Date: </li>" + search.list[21].dt_txt + "<li>Temperature Min: </li>" +  search.list[21].main.temp_min + "<li>Temperature Max: </li>" +  search.list[21].main.temp_max + "<li>Humidity: </li>" +  search.list[21].main.humidity);
+             
+            $('#five').html("<li>Weather Description: </li>" + search.list[35].weather[0].main + "<li>Date: </li>" + search.list[35].dt_txt + "<li>Temperature Min: </li>" +  search.list[35].main.temp_min + "<li>Temperature Max: </li>" +  search.list[35].main.temp_max + "<li>Humidity: </li>" +  search.list[35].main.humidity);
+                       
+   }); 
+   });
+   });
+     
+</script>
+
+</head>
+<body>
+<h1>Five Day Forecast</h1>
+<form >
+  City:<br>
+  <input type="text" id="city">
+  <button id="search">SEARCH</button>
+</form> 
+    
+<div id="one"></div>  
+
+<div id="two"></div>
+
+<div id="three"></div>
+
+<div id="four"></div>
+
+<div id="five"></div>
+ 
+</body>
+    
+
+    
