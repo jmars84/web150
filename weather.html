@@ -30,7 +30,7 @@
         
         $.getJSON(url, function(search){
         	
-            //skip every 7 days to get 5 day forecast
+            //skip every 7 to get 5 day forecast
             
             $('#one').html("<li>Weather Description: </li>" + search.list[0].weather[0].main + "<li>Date: </li>" + search.list[0].dt_txt + "<li>Temperature Min: </li>" +  search.list[0].main.temp_min + "<li>Temperature Max: </li>" +  search.list[0].main.temp_max + "<li>Humidity: </li>" +  search.list[0].main.humidity);
          
